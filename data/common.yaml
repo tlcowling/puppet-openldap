@@ -1,0 +1,4 @@
+---
+openldap::config::ldapconf::data:
+    BASE: "dc=arse,dc=com"
+    TLS_CACERTDIR: "/etc/openldap/cacerts1"
