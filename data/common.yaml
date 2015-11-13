@@ -1,4 +1,5 @@
 ---
 openldap::config::ldapconf::data:
-    BASE: "dc=arse,dc=com"
+    URI:  "ldap:// ldaps://"
+    DEREF: "never"
     TLS_CACERTDIR: "/etc/openldap/cacerts1"
