@@ -3,3 +3,7 @@ openldap::config::ldapconf::data:
     URI:  "ldap:// ldaps://"
     DEREF: "never"
     TLS_CACERTDIR: "/etc/openldap/cacerts1"
+openldap::database::data:
+    olcSuffix: 'dc=tom,dc=local'
+    olcRootDN: 'cn=Manager,dc=tom,dc=local'
+

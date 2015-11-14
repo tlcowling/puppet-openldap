@@ -11,9 +11,12 @@ class openldap::database (
        path   => '/etc/openldap/slapd.d/cn=config/olcDatabase={2}bdb.ldif',
    } 
 
-   file_line { 'database ldif 1':
+   each($data) |$k, $v| {
+     file_line { "database ldif ${k}":
        path  => '/etc/openldap/slapd.d/cn=config/olcDatabase={2}bdb.ldif',
-       line  => 'olcThomasGiblets: NICE',
-       match => '^olcThomasGiblets:',
+       line  => "${k}: ${v}",
+       match => "^${k}",
+       require => File['olcDatabase{2}bdb.ldif'],
+     }
    }
 }

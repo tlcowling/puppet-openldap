@@ -15,7 +15,7 @@ class openldap {
       include openldap::config::structure
       include openldap::user
       include openldap::config::ldapconf
-        include openldap::database
+      include openldap::database
   } else {
       notice('OS Not supported')
   }
