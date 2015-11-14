@@ -1,4 +1,8 @@
-class openldap::config::structure {
+# == Class: openldap::structure
+#
+#  Sets out the directory structure for openldap and ensures permissions
+#  remain consistent
+class openldap::structure {
     file { 'basedir':
         path    => '/etc/openldap',
         ensure  => 'directory',

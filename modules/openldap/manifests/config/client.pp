@@ -1,6 +1,6 @@
-# == Class: openldap::config::ldapconfig
+# == Class: openldap::config::client
 #
-#  Represents an openldap config
+#  Represents the config for the openldap client
 #
 # === Parameters
 #  [*data*]
@@ -12,13 +12,13 @@
 #
 # === Copyright Tom Cowling 2015
 # === Author Tom Cowling
-class openldap::config::ldapconf (
+class openldap::config::client (
     $showcomment = true,
     $data
 ) {
     notice($data)
 
-    include openldap::config::structure
+    include openldap::structure
 
     concat { 'openldap configuration':
         ensure => present,

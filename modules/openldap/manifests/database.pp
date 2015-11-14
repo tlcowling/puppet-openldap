@@ -1,22 +1,15 @@
-# == Class: openldap::database
-#
 class openldap::database (
-   $data = {}
+    $host = "test.bob.com"
 ) {
-   file { 'olcDatabase{2}bdb.ldif':
-       ensure => 'present',
-       mode   => '0600',
-       owner  => 'ldap',
-       group  => 'ldap',
-       path   => '/etc/openldap/slapd.d/cn=config/olcDatabase={2}bdb.ldif',
-   } 
+    validate_string($host)
+    notice(ldapify_host($host))
 
-   each($data) |$k, $v| {
-     file_line { "database ldif ${k}":
-       path  => '/etc/openldap/slapd.d/cn=config/olcDatabase={2}bdb.ldif',
-       line  => "${k}: ${v}",
-       match => "^${k}",
-       require => File['olcDatabase{2}bdb.ldif'],
-     }
-   }
+    $data = {
+       olcSuffix => "giblets",
+       olcGiblets=> "tom",
+    }
+
+    class { 'openldap::schema::database':
+       data => $data 
+    }
 }
